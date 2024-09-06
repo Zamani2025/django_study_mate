@@ -1,6 +1,7 @@
 
 {% for room in rooms %}
     <div class="roomListRoom">
+        <img src="{{room.image.url}}" style="height:250px; border-radius:10px;" />
     <div class="roomListRoom__header">
         <a href="{% url 'profile' room.host.id %}" class="roomListRoom__author">
         <div class="avatar avatar--small">
@@ -17,6 +18,7 @@
         <p>
             {{ room.description }}
         </p>
+        <p style="text-align:right; font-weight:bold; padding:5px; background:">$ {{room.price}}</p>
     </div>
     <div class="roomListRoom__meta">
         <a href="{% url 'room' room.id%}" class="roomListRoom__joined">
@@ -38,6 +40,7 @@
         {{room.participants.count}} Joined
         </a>
         <p class="roomListRoom__topic">{{room.topic.name}}</p>
+        <a href="" class="roomListRoom__topic">Buy</a>
     </div>
     </div>
 {% endfor %}

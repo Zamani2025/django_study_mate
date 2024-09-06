@@ -115,6 +115,8 @@ def createRoom(request):
             host = request.user,
             topic = topic,
             name = request.POST.get('name'),
+            price = request.POST.get('price'),
+            image = request.FILES['image'],
             description = request.POST.get('description')
         )
         return redirect('home')
@@ -139,6 +141,10 @@ def updateRoom(request, pk):
         room.host = request.user
         room.topic = topic
         room.name = request.POST.get('name')
+        room.price = request.POST.get('price')
+        if request.POST.get("image"):
+            room.image = request.FILES.get('image')
+            
         room.description = request.POST.get('description')
 
         room.save()

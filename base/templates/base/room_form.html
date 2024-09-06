@@ -19,11 +19,11 @@
           </div>
         </div>
         <div class="layout__body">
-          <form class="form" action="" method="post">
+          <form class="form" action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
 
             <div class="form__group">
-                <label for="room_topic">Room Topic</label>
+                <label for="room_topic">Course Category</label>
                 <input id="room_topic" name="topic" value="{{room.topic.name}}" type="text" list="topic-list" />
                 <datalist id="topic-list">
                     <select id="room_topic">
@@ -34,8 +34,18 @@
                 </datalist>
             </div>
             <div class="form__group">
-                <label for="room_name">Room Name</label>
+                <label for="room_name">Course Name</label>
                 {{form.name}}
+            <!-- <input id="room_name" name="room_name" type="text" placeholder="E.g. Mastering Python + Django" /> -->
+            </div>
+            <div class="form__group">
+                <label for="room_name">Course Price</label>
+                {{form.price}}
+            <!-- <input id="room_name" name="room_name" type="text" placeholder="E.g. Mastering Python + Django" /> -->
+            </div>
+            <div class="form__group">
+                <label for="room_name">Course Image</label>
+                {{form.image}}
             <!-- <input id="room_name" name="room_name" type="text" placeholder="E.g. Mastering Python + Django" /> -->
             </div>
 

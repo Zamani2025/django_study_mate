@@ -9,7 +9,7 @@ class User(AbstractUser):
     avatar = models.ImageField(null=True, default="avatar.svg")
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ["username"]
 
 
 
@@ -23,6 +23,8 @@ class Room(models.Model):
     host = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=200)
+    price = models.IntegerField(default=0)
+    image = models.ImageField(null=True, default="avatar.svg", upload_to='images/')
     description = models.TextField(null=True, blank=True)
     participants =  models.ManyToManyField(User, related_name='participants', blank=True)
     updated = models.DateTimeField(auto_now=True)
